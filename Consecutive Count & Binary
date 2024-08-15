@@ -1,0 +1,26 @@
+The program must accept an integer N as the input. The program must form an integer X by modifying the binary representation of N based on the following condition.
+If Os are repeated consecutively (possibly once) in the binary representation of N, then the program must replace those Os with the number of times it is repeated consecutively.
+Finally, the program must print the binary representation of X as the output.
+Note: There are no more than 9 consecutive Os in the binary representation of N.
+Boundary Condition(s): 1 <= N <= 10^5
+Input Format: The first line contains N.
+Output Format:
+The first line contains the binary representation of X.
+Example Input/Output 1:
+Input: 25
+Output: 10101111010101
+
+
+N=int(input())
+binVal=bin(N)[2:]
+zeroCount=0
+resultNum=""
+for bit in binVal:
+    if bit=='1':
+        resultNum+=str(zeroCount)*zeroCount
+        zeroCount=0
+        resultNum+='1'
+    else:
+        zeroCount+=1
+resultNum+=str(zeroCount)*zeroCount
+print(bin(int(resultNum))[2:])
