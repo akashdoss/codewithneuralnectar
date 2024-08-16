@@ -1,0 +1,44 @@
+📝 Student Marks Extractor
+This Python script takes the names of students and their corresponding marks as input. The marks are enclosed within the first and last characters of the students' names. The script then outputs each student's name along with their extracted marks.
+
+🎯 Problem Statement
+Given a list of students and their marks where the marks are embedded in the first and last character of their names, the program should extract and print each student's name with their respective marks.
+
+🛠️ How It Works
+The script first splits the input names and marks into separate lists.
+A dictionary is created to map the first and last character of the marks string to the actual marks.
+Finally, the program iterates over each student's name and prints their marks by matching the corresponding first and last character.
+📄 Example Input/Output
+Input:
+JAKE RAVI ABDUL AYSHA DIYA
+A98L J76E A100A D88A R91I
+Output:
+JAKE 76
+RAVI 91
+ABDUL 98
+AYSHA 100
+DIYA 88
+
+🚀 Code Implementation
+python
+
+# Accept the input of student names
+student_names = input().split()
+
+# Accept the input of student marks
+student_marks = input().split()
+
+# Create a dictionary to store the marks associated with the first and last character of each mark
+marks_dict = {}
+for mark in student_marks:
+    # The key is the first and last character of the mark string
+    key = mark[0] + mark[-1]
+    # The value is the mark number between the first and last character
+    marks_dict[key] = mark[1:-1]
+
+# Iterate over each student name
+for student in student_names:
+    # The key for the student is the first and last character of their name
+    key = student[0] + student[-1]
+    # Retrieve the corresponding mark using the key
+    print(student, marks_dict[key])
