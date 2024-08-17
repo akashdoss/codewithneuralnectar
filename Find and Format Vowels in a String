@@ -1,0 +1,64 @@
+
+📝 Problem Statement: Find and Format Vowels in a String
+Description:
+
+Given a string S, find the number of vowels V in the string. Print the string across V lines based on the following conditions:
+
+The first line encloses the 1st vowel and Vth vowel with hyphens -.
+The second line encloses the 2nd vowel and (V-1)th vowel with hyphens -.
+This pattern continues until all lines are printed.
+Note:
+
+If V is odd, the middle line contains the string with the middle vowel enclosed.
+At least one vowel is always present in the string S.
+Example:
+
+Input:
+
+Copy code
+NOTEBOOKPAPER
+Output:
+
+mathematica
+Copy code
+N-O-TEBOOKPAP-E-R
+NOT-E-BOOKP-A-PER
+NOTEB-O--O-KPAPER
+NOTEB-O--O-KPAPER
+NOT-E-BOOKP-A-PER
+N-O-TEBOOKPAP-E-R
+💻 Solution
+Here’s the Python solution to solve this problem:
+
+python
+Copy code
+# 🚀 Input the string
+S = input().strip()
+
+# 🔍 Find the number of vowels in the string
+V = len([ch for ch in S if ch in 'AEIOUaeiou'])
+
+# 🛠️ Generate the formatted output for each line
+for ctr in range(1, V + 1):
+    resString = ""
+    currVowel = 0
+    
+    for ch in S:
+        if ch not in 'AEIOUaeiou':
+            resString += ch
+        else:
+            currVowel += 1
+            if currVowel == ctr or currVowel == V - ctr + 1:
+                resString += "-" + ch + "-"
+            else:
+                resString += ch
+    
+    # 🖨️ Print each formatted line
+    print(resString)
+Explanation:
+
+Input Handling: The code takes the input string S and calculates the number of vowels V.
+Looping Through Lines: The code loops through each line, determining which vowels to enclose with hyphens based on their positions.
+Constructing Each Line: The code constructs the output line by line, placing hyphens around the required vowels and then printing the result.
+Output: The string is printed across multiple lines with specific vowels enclosed within hyphens.
+
